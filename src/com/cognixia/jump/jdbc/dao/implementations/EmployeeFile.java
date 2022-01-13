@@ -76,12 +76,16 @@ public class EmployeeFile implements EmployeeDAO {
 
 	@Override
 	public boolean addEmployee(Employee employee) {
+		List<Employee> employees = getAllEmployees();
+		for(int i = 0; i < employees.size();++i) {
+			id = employees.get(i).getId();
+		}
+		++id;
 		boolean succeed = false;
 		employee.setId(id);
 		employee.getContact().setEmployee_id(id);
 		employee.getPayroll().setEmployee_id(id);
 		++id;
-		List<Employee> employees = getAllEmployees();
 		employees.add(employee);
 		try(ObjectOutputStream writer = new ObjectOutputStream( new FileOutputStream(file,false) ) ) {
 			writer.writeInt(++numEmployees);
