@@ -21,9 +21,7 @@ public class ProjectRunner {
 	Scanner sc;
 	public static void main(String[] args) {
 		ProjectRunner runner = new ProjectRunner();
-	}
-	public ProjectRunner() {
-		loop();
+		runner.loop();
 	}
 	private void loop() {
 		sc = new Scanner(System.in);
@@ -288,5 +286,8 @@ public class ProjectRunner {
 			}
 		}while(!cont);
 		return new Employee(first_name, last_name, ssn, department, new Contact(address, email, phone), new Payroll(salary,rate,direct_deposit,account,routing));
+	}
+	public static EmployeeDAO getEDAO() {
+		return EDAO;
 	}
 }
